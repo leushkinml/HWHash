@@ -10,6 +10,7 @@ public class Recipe <P extends Product> {
 
     private Set<Recipe> recipes;
 
+
     public Recipe(String nameOfRecipe) {
         this.nameOfRecipe = nameOfRecipe;
         this.costOfRecipe = costOfRecipe;
