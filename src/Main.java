@@ -65,5 +65,31 @@ public class Main {
         for (Recipe recipe : recipes) {
             System.out.println(recipe);
         }
+        System.out.println();
+       // ДЗ 2 Задание 2
+
+        Set<Integer> numbers = new HashSet<>(20);
+        for (int i = 0; i < 20; i++) {
+            numbers.add((int) (Math.random()*1000));
+        }
+
+//        for (Integer number: numbers) {
+//            numbers.add((int) (Math.random()*1000));
+//        }
+
+        for (Integer number: numbers) {
+            System.out.println(number);
+        }
+
+//        for (Integer number: numbers) {
+//            if (numbers % 2 != 0) {
+//
+//            }
+//        }
+//        for (int i = 0; i < 20; i++) {
+//            if ((numbers[i] % 2) == 0) {
+//            }
+//        }
+
     }
 }
