@@ -2,18 +2,17 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class Recipe <P extends Product> {
+public class Recipe //<P extends Product>
+{
 
     private String nameOfRecipe;
     private double costOfRecipe;
     private Set<Product> ingredients;
-
     private Set<Recipe> recipes;
 
 
     public Recipe(String nameOfRecipe) {
-        this.nameOfRecipe = nameOfRecipe;
-        this.costOfRecipe = costOfRecipe;
+        setNameOfRecipe(nameOfRecipe);
 
         ingredients = new HashSet<>();
 
@@ -25,6 +24,13 @@ public class Recipe <P extends Product> {
         return nameOfRecipe;
     }
 
+    private void setNameOfRecipe(String nameOfRecipe) {
+        if (nameOfRecipe == null || nameOfRecipe.isEmpty() || nameOfRecipe.isBlank()) {
+            throw new IllegalArgumentException("Заполните название рецепта.");
+        } else {
+            this.nameOfRecipe = nameOfRecipe;
+        }
+    }
     public double getCostOfRecipe() {
         double costOfRecipe = 0;
         for (Product product : ingredients) {
@@ -45,13 +51,13 @@ public class Recipe <P extends Product> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Recipe)) return false;
-        Recipe<?> recipe = (Recipe<?>) o;
-        return Double.compare(recipe.getCostOfRecipe(), getCostOfRecipe()) == 0 && getNameOfRecipe().equals(recipe.getNameOfRecipe()) && getIngredients().equals(recipe.getIngredients()) && getRecipes().equals(recipe.getRecipes());
+        Recipe recipe = (Recipe) o;
+        return Objects.equals(getNameOfRecipe(), recipe.getNameOfRecipe());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getNameOfRecipe(), getCostOfRecipe(), getIngredients(), getRecipes());
+        return Objects.hash(getNameOfRecipe());
     }
 
     @Override
