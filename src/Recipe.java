@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -7,9 +8,10 @@ public class Recipe //<P extends Product>
 
     private String nameOfRecipe;
     private double costOfRecipe;
-    private Set<Product> ingredients;
-    private Set<Recipe> recipes;
+    private HashSet<Product> ingredients;
+    private HashSet<Recipe> recipes;
 
+    private HashMap<Product, Integer> productForRecipe;
 
     public Recipe(String nameOfRecipe) {
         setNameOfRecipe(nameOfRecipe);
@@ -17,7 +19,10 @@ public class Recipe //<P extends Product>
         ingredients = new HashSet<>();
 
         recipes = new HashSet<>();
+
+        productForRecipe = new HashMap<>();
     }
+
 
 
     public String getNameOfRecipe() {
@@ -34,17 +39,31 @@ public class Recipe //<P extends Product>
     public double getCostOfRecipe() {
         double costOfRecipe = 0;
         for (Product product : ingredients) {
-            costOfRecipe = product.getPriceInRubles() + costOfRecipe;
+            costOfRecipe = product.getPriceInRubles()*product.getQuantityInKg() + costOfRecipe;
         }
         return costOfRecipe;
     }
-
+//    public double getCostOfRecipe() {
+//        double costOfRecipe = 0;
+//        for (Product product : ingredients) {
+//            costOfRecipe = product.getPriceInRubles() + costOfRecipe;
+//        }
+//        return costOfRecipe;
+//    }
     public Set<Recipe> getRecipes() {
         return recipes;
     }
 
     public Set<Product> getIngredients() {
         return ingredients;
+    }
+    public HashMap<Product, Integer> getProductForRecipe() {
+        return productForRecipe;
+    }
+
+    public void setProductForRecipe(HashMap<Product, Integer> productForRecipe) {
+//        if (productForRecipe.values() == null)
+        this.productForRecipe = productForRecipe;
     }
 
     @Override
@@ -54,6 +73,7 @@ public class Recipe //<P extends Product>
         Recipe recipe = (Recipe) o;
         return Objects.equals(getNameOfRecipe(), recipe.getNameOfRecipe());
     }
+
 
     @Override
     public int hashCode() {

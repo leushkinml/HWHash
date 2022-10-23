@@ -53,6 +53,10 @@ public class Main {
         cake.getIngredients().add(salt);
         cake.getIngredients().add(butter);
 
+
+
+
+
         Recipe coctail = new Recipe("Коктейль");
         coctail.getIngredients().add(milk);
         coctail.getIngredients().add(orange);
@@ -155,6 +159,93 @@ public class Main {
         System.out.println("ДЗ 3. Задание 4." +
                 "ArrayList. Так как containsAll(list) будет перебирать все элементы коллекции, " +
                 "то меньше времени потребуется на обработку наиболее простой коллекции.");
+
+
+        System.out.println();
+        System.out.println("Map. ДЗ 1. Задание 1.");
+
+        HashMap<String, String> manPhone = new HashMap<>();
+        manPhone.put("Иванов 1", "+7916111-11-01");
+        manPhone.put("Иванов 2", "+7916111-11-02");
+        manPhone.put("Иванов 3", "+7916111-11-03");
+        manPhone.put("Иванов 4", "+7916111-11-04");
+        manPhone.put("Иванов 5", "+7916111-11-05");
+        manPhone.put("Иванов 6", "+7916111-11-06");
+        manPhone.put("Иванов 7", "+7916111-11-07");
+        manPhone.put("Иванов 8", "+7916111-11-08");
+        manPhone.put("Иванов 9", "+7916111-11-09");
+        manPhone.put("Иванов 10", "+7916111-11-10");
+        manPhone.put("Иванов 11", "+7916111-11-11");
+        manPhone.put("Иванов 12", "+7916111-11-12");
+        manPhone.put("Иванов 13", "+7916111-11-13");
+        manPhone.put("Иванов 14", "+7916111-11-14");
+        manPhone.put("Иванов 15", "+7916111-11-15");
+        manPhone.put("Иванов 16", "+7916111-11-16");
+        manPhone.put("Иванов 17", "+7916111-11-17");
+        manPhone.put("Иванов 18", "+7916111-11-18");
+        manPhone.put("Иванов 19", "+7916111-11-19");
+        manPhone.put("Иванов 20", "+7916111-11-20");
+
+        System.out.println(manPhone);
+
+        System.out.println();
+        System.out.println("Map. ДЗ 1. Задание 2.");
+
+        HashMap<Product, Integer> productForRecipe = new HashMap<>();
+        cake.getProductForRecipe().put(milk, 2);
+        cake.getProductForRecipe().put(salt, 1);
+        cake.getProductForRecipe().put(butter, 3);
+        cake.getProductForRecipe().getOrDefault(banana, 1);
+
+        System.out.println();
+        System.out.println("Map. ДЗ 1. Задание 3.");
+
+        HashMap<String, Integer> freshMap = new HashMap<>();
+        freshMap.put("First", 111);
+        freshMap.put("Second", 222);
+        freshMap.put("Third", 333);
+        freshMap.put("Forth", 444);
+        System.out.println(freshMap);
+
+        freshMap.put("First", 555);
+
+        System.out.println();
+        System.out.println(freshMap);
+
+        System.out.println();
+        System.out.println("Map. ДЗ 2. Задание 1.");
+
+        HashMap<String, List<Integer>> sumMap = new HashMap<>();
+        sumMap.put("str1", new ArrayList<>(Arrays.asList(1,2,3)));
+        sumMap.put("str2", new ArrayList<>(Arrays.asList(4,5,6)));
+        sumMap.put("str3", new ArrayList<>(List.of(7,8,9)));
+        sumMap.put("str4", new ArrayList<>(List.of(10,12,13)));
+        sumMap.put("str5", new ArrayList<>(List.of(21,22,23)));
+
+//        HashMap<String, Integer> sumMap2 = new HashMap<>();
+//        sumMap2.put("st1", (for (int i = 0; i < sumMap.size(); i++) {
+//            int currentNum = sumMap.values().size();
+//            sumMap.set(i, currentNum * 2);)
+//        })
+
+
+        System.out.println();
+        System.out.println("Map. ДЗ 2. Задание 2.");
+
+        HashMap<Integer, String> oderedMap = new HashMap<>();
+        oderedMap.put(1, "Один");
+        oderedMap.put(2, "Два");
+        oderedMap.put(3, "Три");
+        oderedMap.put(4, "Четыре");
+        oderedMap.put(5, "Пять");
+        oderedMap.put(6, "Шесть");
+        oderedMap.put(7, "Семь");
+        oderedMap.put(8, "Восемь");
+        oderedMap.put(9, "Девять");
+        oderedMap.put(10, "Десять");
+
+        System.out.println(oderedMap);
+
     }
 
 //    public static Passport getPassportByNumber(String checkNumber) {
