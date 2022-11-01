@@ -7,25 +7,28 @@ public class Product {
 
     private boolean boughtOrNot;
 
-    private Set<Product> products;
+    static Set<Product> productsList = new HashSet<>();
 
     public Product(String name, double priceInRubles, int quantityInKg,boolean boughtOrNot) {
         setName(name);
         setPriceInRubles(priceInRubles);
         setQuantityInKg(quantityInKg);
         setBoughtOrNot(boughtOrNot);
-
-        products = new HashSet<>();
     }
 
-    private void checkProductsInList() {
-        for (Product product: products) {
-            if (product.name.equals(getName())) {
-                System.out.println("Повторный ввод продукта");
-            }
+//    public static void addProductInList(Product newProduct) {
+//        if (productsList.contains(newProduct)) {
+//            productsList.add(newProduct);
+//        } else {
+//            throw new RuntimeException("Такой продукт уже есть!");
+//        }
+//    }
+
+    public static void addProductInList(Product newProduct) {
+        if (!productsList.add(newProduct)) {
+            throw new RuntimeException("Такой продукт \"" + newProduct.name + "\" уже есть!");
         }
     }
-
 
     public String getName() {
         return name;
@@ -72,13 +75,12 @@ public class Product {
     }
 
     public Set<Product> getProducts() {
-        return products;
+        return productsList;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-//        checkProductsInList();
         if (!(o instanceof Product)) return false;
         Product product = (Product) o;
         return Objects.equals(getName(), product.getName()) && Objects.equals(getProducts(), product.getProducts());
@@ -86,8 +88,7 @@ public class Product {
 
     @Override
     public int hashCode() {
-        checkProductsInList();
-        return Objects.hash(getName(), getProducts());
+        return Objects.hash(getName());
     }
 
     @Override

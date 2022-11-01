@@ -1,39 +1,36 @@
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Passport {
-    private final String passportNumber;
+    private final int passportNumber;
     private  String surname;
     private  String name;
     private  String secondName;
     private String  dateOfBirth;
 
-    private static Set<Passport> passports;
+    public static List<Passport> listOfPassports = new ArrayList<Passport>();
 
-    public Passport(String passportNumber, String surname, String name, String dateOfBirth) {
+    public Passport(int passportNumber, String surname, String name, String dateOfBirth) {
         this(passportNumber, surname, name, "Отчество отсутствует", dateOfBirth);
     }
-    public Passport(String passportNumber, String surname, String name, String secondName, String dateOfBirth) {
+    public Passport(int passportNumber, String surname, String name, String secondName, String dateOfBirth) {
         this.passportNumber = passportNumber;
         setSurname(surname);
         setName(name);
         setSecondName(secondName);
         setDateOfBirth(dateOfBirth);
 
-        passports = new HashSet<>();
     }
 
-//    public  Passport getPassportByNumber(String checkNumber) {
-//        for (Passport passport: passports) {
-//            if (checkNumber.equals(getPassportNumber())) {
-//                return passport;
-//            }
-//        }
-//        return null;
-//    }
+    public static void getPassportByNumber(int checkNumber) {
+        for (Passport passport: listOfPassports) {
+            if (checkNumber == passport.passportNumber) {
+                System.out.println(passport);
+            }
+        }
 
-    public String getPassportNumber() {
+    }
+
+    public int getPassportNumber() {
         return passportNumber;
     }
 
@@ -62,7 +59,6 @@ public class Passport {
     }
 
     public String getSecondName() {
-
         return secondName;
     }
 
@@ -86,8 +82,8 @@ public class Passport {
         }
     }
 
-    public Set<Passport> getPassports() {
-        return passports;
+    public static List<Passport> getListOfPassports() {
+        return listOfPassports;
     }
 
     @Override

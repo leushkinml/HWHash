@@ -1,6 +1,5 @@
-import java.lang.reflect.Array;
-import java.time.LocalDate;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
 
@@ -14,68 +13,43 @@ public class Main {
         Product salt = new Product("Соль", 0.56, 3, false);
         Product butter = new Product("Масло", 36, 11, false);
 
-        Set<Product> productsToBuy = new HashSet<>();
-//        productsToBuy.add(new Product("Банан", 52.1, 2, true));
-//        productsToBuy.add(new Product("Апельсин", 23.86, 3, false));
-//        productsToBuy.add(new Product("Молоко", 6.52, 5, true));
-//        productsToBuy.add(new Product("Молоко", 54.52, 5, false));
-//        productsToBuy.add(new Product("Хлеб", 12.1, 7, false));
-//        productsToBuy.add(new Product("Соль", 0.56, 3, false));
-//        productsToBuy.add(new Product("Масло", 36, 11, false));
-//        productsToBuy.add(new Product("Соль", 13, 28,false));
+        Product.addProductInList(banana);
+        Product.addProductInList(orange);
+        Product.addProductInList(milk);
+        Product.addProductInList(bread);
+        Product.addProductInList(salt);
+        Product.addProductInList(butter);
+       // Product.addProductInList(butter); // Выбрасывает исключение
 
-        productsToBuy.add(banana);
-        productsToBuy.add(orange);
-        productsToBuy.add(milk);
-        productsToBuy.add(milk);
-        productsToBuy.add(bread);
-        productsToBuy.add(salt);
-        productsToBuy.add(butter);
-
-        for (Product product : productsToBuy) {
-            System.out.println(product);
-        }
 
         System.out.println();
-        System.out.println(Arrays.toString(productsToBuy.toArray()));
+        System.out.println(Arrays.toString(Product.productsList.toArray()));
         System.out.println();
 
-        productsToBuy.remove(banana);
+        Product.productsList.remove(banana);
 
-        System.out.println(Arrays.toString(productsToBuy.toArray()));
+        System.out.println(Arrays.toString(Product.productsList.toArray()));
         System.out.println();
 
         System.out.println();
         System.out.println("ДЗ 2. Задание 1.");
 
         Recipe cake = new Recipe("Торт");
-        cake.getIngredients().add(milk);
-        cake.getIngredients().add(salt);
-        cake.getIngredients().add(butter);
-
-
-
-
+        Recipe.addProductInRecipe(banana, 3);
+        Recipe.addProductInRecipe(salt, 1);
 
         Recipe coctail = new Recipe("Коктейль");
-        coctail.getIngredients().add(milk);
-        coctail.getIngredients().add(orange);
+
 
         Recipe coctailFresh = new Recipe("Коктейль Фреш");
-        coctailFresh.getIngredients().add(milk);
-        coctailFresh.getIngredients().add(orange);
 
-        Set<Recipe> recipes = new HashSet<>();
-        recipes.add(cake);
-        recipes.add(cake);
-        recipes.add(coctail);
-        recipes.add(coctailFresh);
+
+        Recipe.addRecipeInList(cake);
+        //Recipe.addRecipeInList(cake);// Выбрасывает исключение
+        Recipe.addRecipeInList(coctail);
+        Recipe.addRecipeInList(coctailFresh);
         System.out.println();
 
-        for (Recipe recipe : recipes) {
-            System.out.println(recipe);
-        }
-        System.out.println();
 
         System.out.println();
         System.out.println("ДЗ 2. Задание 2.");
@@ -92,79 +66,137 @@ public class Main {
         System.out.println("ДЗ 3. Задание 3.");
 
 
-        Passport passport1 = new Passport("123456789", "Иванов", "Иван", "Иванович", "15.03.1969");
-        Passport passport2 = new Passport("987654321", "Петров", "Пётр", "Петрович", "25.04.1971");
+        Passport passport1 = new Passport(123456789, "Иванов", "Иван", "Иванович", "15.03.1969");
+        Passport passport2 = new Passport(987654321, "Петров", "Пётр", "Петрович", "25.04.1971");
 
-        System.out.println(passport1);
+        //System.out.println(passport1);
 
-        Set<Passport> passports = new HashSet<>();
-        passports.add(passport1);
-        passports.add(passport2);
+        Passport.listOfPassports.add(passport1);
+        Passport.listOfPassports.add(passport2);
 
-//        System.out.println(getPassportByNumber("123456789"));
+        Passport.getPassportByNumber(987654321);
+        //Passport.getPassportByNumber(54321);
 
 
         System.out.println();
-        System.out.println("ДЗ 3. Задание 3.");
+        System.out.println("ДЗ 3. Задание 2.");
 
-        List<Multiplication> multiplication = new ArrayList<>();
-        multiplication.add(new Multiplication("2*2"));
-        multiplication.add(new Multiplication("2*3"));
-        multiplication.add(new Multiplication("2*4"));
-        multiplication.add(new Multiplication("2*5"));
-        multiplication.add(new Multiplication("2*6"));
-        multiplication.add(new Multiplication("2*7"));
-        multiplication.add(new Multiplication("2*8"));
-        multiplication.add(new Multiplication("2*9"));
-        multiplication.add(new Multiplication("3*3"));
-        multiplication.add(new Multiplication("3*4"));
-        multiplication.add(new Multiplication("3*5"));
-        multiplication.add(new Multiplication("3*6"));
-        multiplication.add(new Multiplication("3*7"));
-        multiplication.add(new Multiplication("3*8"));
-        multiplication.add(new Multiplication("3*9"));
-        multiplication.add(new Multiplication("4*4"));
-        multiplication.add(new Multiplication("4*5"));
-        multiplication.add(new Multiplication("4*6"));
-        multiplication.add(new Multiplication("4*7"));
-        multiplication.add(new Multiplication("4*8"));
-        multiplication.add(new Multiplication("4*9"));
-        multiplication.add(new Multiplication("5*5"));
-        multiplication.add(new Multiplication("5*6"));
-        multiplication.add(new Multiplication("5*7"));
-        multiplication.add(new Multiplication("5*8"));
-        multiplication.add(new Multiplication("5*9"));
-        multiplication.add(new Multiplication("6*6"));
-        multiplication.add(new Multiplication("6*7"));
-        multiplication.add(new Multiplication("6*8"));
-        multiplication.add(new Multiplication("6*9"));
-        multiplication.add(new Multiplication("7*7"));
-        multiplication.add(new Multiplication("7*8"));
-        multiplication.add(new Multiplication("7*9"));
-        multiplication.add(new Multiplication("8*8"));
-        multiplication.add(new Multiplication("8*9"));
-        multiplication.add(new Multiplication("9*9"));
 
-        System.out.println(multiplication);
-        System.out.println();
+        Multiplication ex1 = new Multiplication("2*2");
+        Multiplication ex2 = new Multiplication("2*3");
+        Multiplication ex3 = new Multiplication("2*4");
+        Multiplication ex4 = new Multiplication("2*5");
+        Multiplication ex5 = new Multiplication("2*3");
+        Multiplication ex6 = new Multiplication("2*4");
+        Multiplication ex7 = new Multiplication("2*5");
+        Multiplication ex8 = new Multiplication("2*6");
+        Multiplication ex9 = new Multiplication("2*7");
+        Multiplication ex10 = new Multiplication("2*8");
+        Multiplication ex11 = new Multiplication("2*9");
+        Multiplication ex12 = new Multiplication("3*3");
+        Multiplication ex13 = new Multiplication("3*4");
+        Multiplication ex14 = new Multiplication("3*5");
+        Multiplication ex15 = new Multiplication("3*6");
+        Multiplication ex16 = new Multiplication("3*7");
+        Multiplication ex17 = new Multiplication("3*8");
+        Multiplication ex18 = new Multiplication("3*9");
+        Multiplication ex19 = new Multiplication("4*4");
+        Multiplication ex20 = new Multiplication("4*5");
+        Multiplication ex21 = new Multiplication("4*6");
+        Multiplication ex22 = new Multiplication("4*7");
+        Multiplication ex23 = new Multiplication("4*8");
+        Multiplication ex24 = new Multiplication("4*9");
+        Multiplication ex25 = new Multiplication("5*5");
+        Multiplication ex26 = new Multiplication("5*6");
+        Multiplication ex27 = new Multiplication("5*7");
+        Multiplication ex28 = new Multiplication("5*8");
+        Multiplication ex29 = new Multiplication("5*9");
+        Multiplication ex30 = new Multiplication("6*6");
+        Multiplication ex31 = new Multiplication("6*7");
+        Multiplication ex32 = new Multiplication("6*8");
+        Multiplication ex33 = new Multiplication("6*9");
+        Multiplication ex34 = new Multiplication("7*7");
+        Multiplication ex35 = new Multiplication("7*8");
+        Multiplication ex36 = new Multiplication("7*9");
+        Multiplication ex37 = new Multiplication("8*8");
+        Multiplication ex38 = new Multiplication("8*9");
+        Multiplication ex39 = new Multiplication("9*9");
 
-        for (int i = 0; i < multiplication.size(); i = i + ((int) (Math.random()*10))) {
-            System.out.println(multiplication.get(i));
-        }
-//        for (Multiplication multiplication1: multiplication) {
+        Multiplication.addExInTask(ex1);
+        Multiplication.addExInTask(ex2);
+        Multiplication.addExInTask(ex3);
+        Multiplication.addExInTask(ex4);
+        Multiplication.addExInTask(ex5);
+        Multiplication.addExInTask(ex6);
+        Multiplication.addExInTask(ex7);
+        Multiplication.addExInTask(ex8);
+        Multiplication.addExInTask(ex9);
+        Multiplication.addExInTask(ex10);
+        Multiplication.addExInTask(ex11);
+        Multiplication.addExInTask(ex12);
+        Multiplication.addExInTask(ex13);
+        Multiplication.addExInTask(ex14);
+        Multiplication.addExInTask(ex15);
+        Multiplication.addExInTask(ex16);
+        Multiplication.addExInTask(ex17);
+        Multiplication.addExInTask(ex18);
+        Multiplication.addExInTask(ex19);
+        Multiplication.addExInTask(ex20);
+        Multiplication.addExInTask(ex21);
+        Multiplication.addExInTask(ex22);
+        Multiplication.addExInTask(ex23);
+        Multiplication.addExInTask(ex24);
+        Multiplication.addExInTask(ex25);
+        Multiplication.addExInTask(ex26);
+        Multiplication.addExInTask(ex27);
+        Multiplication.addExInTask(ex28);
+        Multiplication.addExInTask(ex29);
+        Multiplication.addExInTask(ex30);
+        Multiplication.addExInTask(ex31);
+        Multiplication.addExInTask(ex32);
+        Multiplication.addExInTask(ex33);
+        Multiplication.addExInTask(ex34);
+        Multiplication.addExInTask(ex35);
+        Multiplication.addExInTask(ex36);
+        Multiplication.addExInTask(ex37);
+        Multiplication.addExInTask(ex38);
+        Multiplication.addExInTask(ex39);
+
+
+//        for (Multiplication multiplication1: Multiplication.getMultiplications()) {
 //            System.out.println(multiplication1);
 //        }
 
+        int count = 0;
+        while (count < 15) {
+            for (int i = 0; i < 39; i = i + ((int) (Math.random() * 10))) {
+                System.out.println(Multiplication.multiplications.get(i));
+                count++;
+            }
+        }
+
+//        int count = 0;
+//        while (count < 15) {
+//            for (int i = 0; i < 39; i = i + (int)(Math.random()*Multiplication.multiplications.size())) {
+//                System.out.println(Multiplication.multiplications.get(i));
+//                count++;
+//            }
+//        }
+
+
+
+
         System.out.println();
         System.out.println("ДЗ 3. Задание 4." +
-                "ArrayList. Так как containsAll(list) будет перебирать все элементы коллекции, " +
-                "то меньше времени потребуется на обработку наиболее простой коллекции.");
+                "HashList. Так как containsAll(list) будет перебирать все элементы коллекции, " +
+                "то меньше времени потребуется на обработку по хеш-коду.");
 
 
         System.out.println();
         System.out.println("Map. ДЗ 1. Задание 1.");
 
-        HashMap<String, String> manPhone = new HashMap<>();
+
+        Map<String, String> manPhone = new HashMap<>();
         manPhone.put("Иванов 1", "+7916111-11-01");
         manPhone.put("Иванов 2", "+7916111-11-02");
         manPhone.put("Иванов 3", "+7916111-11-03");
@@ -188,65 +220,82 @@ public class Main {
 
         System.out.println(manPhone);
 
+//        for (Map.Entry<String, String> contact: manPhone.entrySet()) {
+//            System.out.println("Контакт " + pair.getKey() + ": " + pair.getValue());
+//        }
+
+//        for (String name: manPhone.keySet()) {
+//            System.out.println("В мапе присутствует контакт по имени " + name);
+//        }
+//
+//        for (String phoneNumber: manPhone.values()) {
+//            System.out.println("В мапе присутствует номер телефона  " + phoneNumber);
+//        }
+
         System.out.println();
         System.out.println("Map. ДЗ 1. Задание 2.");
+//
+//        HashMap<Product, Integer> productForRecipe = new HashMap<>();
+//        cake.getProductForRecipe().put(milk, 2);
+//        cake.getProductForRecipe().put(salt, 1);
+//        cake.getProductForRecipe().put(butter, 3);
+//        cake.getProductForRecipe().getOrDefault(banana, 1);
+//
+//        System.out.println();
+//        System.out.println("Map. ДЗ 1. Задание 3.");
+//
+//        HashMap<String, Integer> freshMap = new HashMap<>();
+//        freshMap.put("First", 111);
+//        freshMap.put("Second", 222);
+//        freshMap.put("Third", 333);
+//        freshMap.put("Forth", 444);
+//        System.out.println(freshMap);
+//
+//        freshMap.put("First", 555);
+//
+//        System.out.println();
+//        System.out.println(freshMap);
+//
+//        System.out.println();
+//        System.out.println("Map. ДЗ 2. Задание 1.");
+//
+//        HashMap<String, List<Integer>> sumMap = new HashMap<>();
+//        sumMap.put("str1", new ArrayList<>(Arrays.asList(1,2,3)));
+//        sumMap.put("str2", new ArrayList<>(Arrays.asList(4,5,6)));
+//        sumMap.put("str3", new ArrayList<>(List.of(7,8,9)));
+//        sumMap.put("str4", new ArrayList<>(List.of(10,12,13)));
+//        sumMap.put("str5", new ArrayList<>(List.of(21,22,23)));
+//
+////        HashMap<String, Integer> sumMap2 = new HashMap<>();
+////        sumMap2.put("st1", (for (int i = 0; i < sumMap.size(); i++) {
+////            int currentNum = sumMap.values().size();
+////            sumMap.set(i, currentNum * 2);)
+////        })
+//
+//
+//        System.out.println();
+//        System.out.println("Map. ДЗ 2. Задание 2.");
+//
+//        HashMap<Integer, String> oderedMap = new HashMap<>();
+//        oderedMap.put(1, "Один");
+//        oderedMap.put(2, "Два");
+//        oderedMap.put(3, "Три");
+//        oderedMap.put(4, "Четыре");
+//        oderedMap.put(5, "Пять");
+//        oderedMap.put(6, "Шесть");
+//        oderedMap.put(7, "Семь");
+//        oderedMap.put(8, "Восемь");
+//        oderedMap.put(9, "Девять");
+//        oderedMap.put(10, "Десять");
+//
+//        System.out.println(oderedMap);
 
-        HashMap<Product, Integer> productForRecipe = new HashMap<>();
-        cake.getProductForRecipe().put(milk, 2);
-        cake.getProductForRecipe().put(salt, 1);
-        cake.getProductForRecipe().put(butter, 3);
-        cake.getProductForRecipe().getOrDefault(banana, 1);
+        }
 
-        System.out.println();
-        System.out.println("Map. ДЗ 1. Задание 3.");
+//    public static int getRandomElement(Multiplication multiplication){
+//        return multiplication [ThreadLocalRandom.current().nextInt(Multiplication.multiplications.size())];
+//    }
 
-        HashMap<String, Integer> freshMap = new HashMap<>();
-        freshMap.put("First", 111);
-        freshMap.put("Second", 222);
-        freshMap.put("Third", 333);
-        freshMap.put("Forth", 444);
-        System.out.println(freshMap);
-
-        freshMap.put("First", 555);
-
-        System.out.println();
-        System.out.println(freshMap);
-
-        System.out.println();
-        System.out.println("Map. ДЗ 2. Задание 1.");
-
-        HashMap<String, List<Integer>> sumMap = new HashMap<>();
-        sumMap.put("str1", new ArrayList<>(Arrays.asList(1,2,3)));
-        sumMap.put("str2", new ArrayList<>(Arrays.asList(4,5,6)));
-        sumMap.put("str3", new ArrayList<>(List.of(7,8,9)));
-        sumMap.put("str4", new ArrayList<>(List.of(10,12,13)));
-        sumMap.put("str5", new ArrayList<>(List.of(21,22,23)));
-
-//        HashMap<String, Integer> sumMap2 = new HashMap<>();
-//        sumMap2.put("st1", (for (int i = 0; i < sumMap.size(); i++) {
-//            int currentNum = sumMap.values().size();
-//            sumMap.set(i, currentNum * 2);)
-//        })
-
-
-        System.out.println();
-        System.out.println("Map. ДЗ 2. Задание 2.");
-
-        HashMap<Integer, String> oderedMap = new HashMap<>();
-        oderedMap.put(1, "Один");
-        oderedMap.put(2, "Два");
-        oderedMap.put(3, "Три");
-        oderedMap.put(4, "Четыре");
-        oderedMap.put(5, "Пять");
-        oderedMap.put(6, "Шесть");
-        oderedMap.put(7, "Семь");
-        oderedMap.put(8, "Восемь");
-        oderedMap.put(9, "Девять");
-        oderedMap.put(10, "Десять");
-
-        System.out.println(oderedMap);
-
-    }
 
 //    public static Passport getPassportByNumber(String checkNumber) {
 //        for (Passport passport: passports) {
@@ -264,3 +313,8 @@ public class Main {
 //        }
 //    }
 }
+//
+//System.out.println("Введите дату и время в формате год-мес-день час:мин : ");
+//        LocalDate dateTask = LocalDate.parse(scanner.next());
+//        LocalTime timeTask = LocalTime.parse(scanner.next());
+//        LocalDateTime startTime = LocalDateTime.of(dateTask, timeTask);

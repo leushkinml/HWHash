@@ -4,13 +4,27 @@ public class Multiplication {
 
     private String multiplicationNumber;
 
-    private static List<Multiplication> multiplications;
+    static List<Multiplication> multiplications = new ArrayList<>();
 
     public Multiplication(String multiplicationNumber) {
         this.multiplicationNumber = multiplicationNumber;
 
-        multiplications = new ArrayList<>();
+       //multiplications = new ArrayList<>();
     }
+
+    public static void addExInTask(Multiplication newEx) {
+        if (!multiplications.add(newEx)) {
+            throw new RuntimeException("Такой пример \"" + newEx.multiplicationNumber + "\" уже есть!");
+        }
+        //multiplications.add(newEx);
+    }
+
+//    int count = 0;
+//        while (count < 15) {
+//        for (int i = 0; i < multiplications.size(); i = i + ((int) (Math.random()*5))) {
+//            System.out.println(multiplications.get(i));
+//        }
+
 
     public String getMultiplicationNumber() {
         return multiplicationNumber;
@@ -39,8 +53,6 @@ public class Multiplication {
 
     @Override
     public String toString() {
-        return "Multiplication{" +
-                "multiplicationNumber='" + multiplicationNumber + '\'' +
-                '}';
+        return "Умножьте: " + multiplicationNumber;
     }
 }

@@ -7,24 +7,33 @@ public class Recipe //<P extends Product>
 {
 
     private String nameOfRecipe;
-    private double costOfRecipe;
-    private HashSet<Product> ingredients;
-    private HashSet<Recipe> recipes;
+    private static double costOfRecipe;
+    static Set<Product> ingredients = new HashSet<>();
+    static Set<Recipe> recipesList = new HashSet<>();
 
-    private HashMap<Product, Integer> productForRecipe;
+//    static HashMap<Product, Integer> productForRecipe = new HashMap<>();
 
     public Recipe(String nameOfRecipe) {
         setNameOfRecipe(nameOfRecipe);
+        this.costOfRecipe = 0;
+        //recipesList.add(this);
+        Set<Product> ingredients;
+        Set<Recipe> recipesList;
 
-        ingredients = new HashSet<>();
-
-        recipes = new HashSet<>();
-
-        productForRecipe = new HashMap<>();
+    }
+    public static void addProductInRecipe(Product product, int quantityOfProduct) {
+        if (ingredients.contains(product)) {
+            throw new RuntimeException("Такой продукт \"" + product.getName() + "\" уже добавлен в рецепт!");
+        }
+        ingredients.add(product);
+        costOfRecipe = costOfRecipe + product.getPriceInRubles()*quantityOfProduct;
     }
 
-
-
+    public static void addRecipeInList(Recipe newRecipe) {
+        if (!recipesList.add(newRecipe)) {
+            throw new RuntimeException("Такой рецепт \"" + newRecipe.nameOfRecipe + "\" уже есть!");
+        }
+    }
     public String getNameOfRecipe() {
         return nameOfRecipe;
     }
@@ -36,13 +45,13 @@ public class Recipe //<P extends Product>
             this.nameOfRecipe = nameOfRecipe;
         }
     }
-    public double getCostOfRecipe() {
-        double costOfRecipe = 0;
-        for (Product product : ingredients) {
-            costOfRecipe = product.getPriceInRubles()*product.getQuantityInKg() + costOfRecipe;
-        }
-        return costOfRecipe;
-    }
+//    public double getCostOfRecipe() {
+//        double costOfRecipe = 0;
+//        for (Product product : ingredients) {
+//            costOfRecipe = product.getPriceInRubles()*product.getQuantityInKg() + costOfRecipe;
+//        }
+//        return costOfRecipe;
+//    }
 //    public double getCostOfRecipe() {
 //        double costOfRecipe = 0;
 //        for (Product product : ingredients) {
@@ -50,21 +59,23 @@ public class Recipe //<P extends Product>
 //        }
 //        return costOfRecipe;
 //    }
-    public Set<Recipe> getRecipes() {
-        return recipes;
+
+
+    public static Set<Recipe> getRecipesList() {
+        return recipesList;
     }
 
     public Set<Product> getIngredients() {
         return ingredients;
     }
-    public HashMap<Product, Integer> getProductForRecipe() {
-        return productForRecipe;
-    }
-
-    public void setProductForRecipe(HashMap<Product, Integer> productForRecipe) {
-//        if (productForRecipe.values() == null)
-        this.productForRecipe = productForRecipe;
-    }
+//    public HashMap<Product, Integer> getProductForRecipe() {
+//        return productForRecipe;
+//    }
+//
+//    public void setProductForRecipe(HashMap<Product, Integer> productForRecipe) {
+////        if (productForRecipe.values() == null)
+//        this.productForRecipe = productForRecipe;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -84,7 +95,7 @@ public class Recipe //<P extends Product>
     public String toString() {
         return "Recipe{" +
                 "nameOfRecipe='" + getNameOfRecipe() + '\'' +
-                ", costOfRecipe=" + getCostOfRecipe() +
+                ", costOfRecipe=" + costOfRecipe +
                 ", ingredients=" + getIngredients() +
                 '}';
     }

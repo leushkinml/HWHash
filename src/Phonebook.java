@@ -6,15 +6,22 @@ public class Phonebook {
     private final String nameSurname;
     private  String phoneNumber;
 
-    private static HashMap<String,String> manPhone;
+    private static HashMap<String,String> phoneBook = new HashMap<>();
 
     public Phonebook(String nameSurname, String phoneNumber) {
         this.nameSurname = nameSurname;
         this.phoneNumber = phoneNumber;
 
-        manPhone = new HashMap<>();
     }
 
+
+
+    //    public static void addUserInList(String nameSurname, String phoneNumber) {
+//        if (manPhonen.put(nameSurname, phoneNumber)) {
+//            return;
+//        }
+//        throw new RuntimeException("Такой продукт \"" + newProduct.name + "\" уже есть!");
+//    }
     public String getNameSurname() {
         return nameSurname;
     }
@@ -28,12 +35,12 @@ public class Phonebook {
     }
 
     public static HashMap<String, String> getMap() {
-        return manPhone;
+        return phoneBook;
     }
 
-    public static void setMap(HashMap<String, String> map) {
-        Phonebook.manPhone = map;
-    }
+//    public static void setMap(HashMap<String, String> map) {
+//        Phonebook.phoneBook = map;
+//    }
 
     @Override
     public boolean equals(Object o) {
