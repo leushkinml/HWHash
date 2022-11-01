@@ -12,6 +12,24 @@ public class Multiplication {
        //multiplications = new ArrayList<>();
     }
 
+
+//    public static void addMultiplicationsInTask() {
+//        Random random = new Random();
+//        int count = 0;
+//        while (count < 15) {
+//            if (!multiplications.contains(multiplications)) {
+//                System.out.println(Multiplication.multiplications.get(random.nextInt(39)));
+//
+//            }
+//            count++;
+//        }
+//
+//
+//        ingredients.add(product);
+//        costOfRecipe = costOfRecipe + product.getPriceInRubles()*quantityOfProduct;
+//    }
+
+
     public static void addExInTask(Multiplication newEx) {
         if (!multiplications.add(newEx)) {
             throw new RuntimeException("Такой пример \"" + newEx.multiplicationNumber + "\" уже есть!");

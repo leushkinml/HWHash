@@ -35,8 +35,8 @@ public class Main {
         System.out.println("ДЗ 2. Задание 1.");
 
         Recipe cake = new Recipe("Торт");
-        Recipe.addProductInRecipe(banana, 3);
-        Recipe.addProductInRecipe(salt, 1);
+//        Recipe.addProductInRecipe(banana, 3);
+//        Recipe.addProductInRecipe(salt, 1);
 
         Recipe coctail = new Recipe("Коктейль");
 
@@ -162,18 +162,27 @@ public class Main {
         Multiplication.addExInTask(ex38);
         Multiplication.addExInTask(ex39);
 
-
 //        for (Multiplication multiplication1: Multiplication.getMultiplications()) {
 //            System.out.println(multiplication1);
 //        }
 
+//        int count = 0;
+//        while (count < 15) {
+//            for (int i = 0; i < 39; i = i + ((int) (Math.random() * 10))) {
+//                System.out.println(Multiplication.multiplications.get(i));
+//                count++;
+//            }
+//        }
+        Random random = new Random();
         int count = 0;
         while (count < 15) {
-            for (int i = 0; i < 39; i = i + ((int) (Math.random() * 10))) {
-                System.out.println(Multiplication.multiplications.get(i));
-                count++;
-            }
+            //for (int i = 0; i < 39; i = random.nextInt(39)) {
+                System.out.println(Multiplication.multiplications.get(random.nextInt(39)));
+
+            //}
+            count++;
         }
+
 
 //        int count = 0;
 //        while (count < 15) {
@@ -183,18 +192,13 @@ public class Main {
 //            }
 //        }
 
-
-
-
         System.out.println();
         System.out.println("ДЗ 3. Задание 4." +
                 "HashList. Так как containsAll(list) будет перебирать все элементы коллекции, " +
                 "то меньше времени потребуется на обработку по хеш-коду.");
 
-
         System.out.println();
         System.out.println("Map. ДЗ 1. Задание 1.");
-
 
         Map<String, String> manPhone = new HashMap<>();
         manPhone.put("Иванов 1", "+7916111-11-01");
@@ -223,11 +227,9 @@ public class Main {
 //        for (Map.Entry<String, String> contact: manPhone.entrySet()) {
 //            System.out.println("Контакт " + pair.getKey() + ": " + pair.getValue());
 //        }
-
 //        for (String name: manPhone.keySet()) {
 //            System.out.println("В мапе присутствует контакт по имени " + name);
 //        }
-//
 //        for (String phoneNumber: manPhone.values()) {
 //            System.out.println("В мапе присутствует номер телефона  " + phoneNumber);
 //        }
@@ -235,86 +237,35 @@ public class Main {
         System.out.println();
         System.out.println("Map. ДЗ 1. Задание 2.");
 //
-//        HashMap<Product, Integer> productForRecipe = new HashMap<>();
-//        cake.getProductForRecipe().put(milk, 2);
-//        cake.getProductForRecipe().put(salt, 1);
-//        cake.getProductForRecipe().put(butter, 3);
-//        cake.getProductForRecipe().getOrDefault(banana, 1);
-//
-//        System.out.println();
-//        System.out.println("Map. ДЗ 1. Задание 3.");
-//
-//        HashMap<String, Integer> freshMap = new HashMap<>();
-//        freshMap.put("First", 111);
-//        freshMap.put("Second", 222);
-//        freshMap.put("Third", 333);
-//        freshMap.put("Forth", 444);
-//        System.out.println(freshMap);
-//
-//        freshMap.put("First", 555);
-//
-//        System.out.println();
-//        System.out.println(freshMap);
-//
-//        System.out.println();
-//        System.out.println("Map. ДЗ 2. Задание 1.");
-//
-//        HashMap<String, List<Integer>> sumMap = new HashMap<>();
-//        sumMap.put("str1", new ArrayList<>(Arrays.asList(1,2,3)));
-//        sumMap.put("str2", new ArrayList<>(Arrays.asList(4,5,6)));
-//        sumMap.put("str3", new ArrayList<>(List.of(7,8,9)));
-//        sumMap.put("str4", new ArrayList<>(List.of(10,12,13)));
-//        sumMap.put("str5", new ArrayList<>(List.of(21,22,23)));
-//
-////        HashMap<String, Integer> sumMap2 = new HashMap<>();
-////        sumMap2.put("st1", (for (int i = 0; i < sumMap.size(); i++) {
-////            int currentNum = sumMap.values().size();
-////            sumMap.set(i, currentNum * 2);)
-////        })
-//
-//
-//        System.out.println();
-//        System.out.println("Map. ДЗ 2. Задание 2.");
-//
-//        HashMap<Integer, String> oderedMap = new HashMap<>();
-//        oderedMap.put(1, "Один");
-//        oderedMap.put(2, "Два");
-//        oderedMap.put(3, "Три");
-//        oderedMap.put(4, "Четыре");
-//        oderedMap.put(5, "Пять");
-//        oderedMap.put(6, "Шесть");
-//        oderedMap.put(7, "Семь");
-//        oderedMap.put(8, "Восемь");
-//        oderedMap.put(9, "Девять");
-//        oderedMap.put(10, "Десять");
-//
-//        System.out.println(oderedMap);
+        Recipe.addProductInRecipe(milk, 2);
+        Recipe.addProductInRecipe(salt, 1);
+        Recipe.addProductInRecipe(butter, 3);
+        Recipe.addProductInRecipe(banana, 1);
+
+        System.out.println(Recipe.recipesList);
+
+        System.out.println();
+        System.out.println("Map. ДЗ 1. Задание 3. В Классе Training");
+
+        System.out.println();
+        System.out.println("Map. ДЗ 2. Задание 1. в  Классе MapTest");
+
+        System.out.println();
+        System.out.println("Map. ДЗ 2. Задание 2.");
+
+        HashMap<Integer, String> oderedMap = new LinkedHashMap<>();
+        oderedMap.put(91, "Один");
+        oderedMap.put(82, "Два");
+        oderedMap.put(73, "Три");
+        oderedMap.put(64, "Четыре");
+        oderedMap.put(55, "Пять");
+        oderedMap.put(46, "Шесть");
+        oderedMap.put(37, "Семь");
+        oderedMap.put(28, "Восемь");
+        oderedMap.put(19, "Девять");
+        oderedMap.put(10, "Десять");
+
+        System.out.println(oderedMap);
 
         }
-
-//    public static int getRandomElement(Multiplication multiplication){
-//        return multiplication [ThreadLocalRandom.current().nextInt(Multiplication.multiplications.size())];
-//    }
-
-
-//    public static Passport getPassportByNumber(String checkNumber) {
-//        for (Passport passport: passports) {
-//            if (checkNumber.equals(passport.getPassportNumber())) {
-//                return passport;
-//            }
-//        }
-//        return null;
-//    }
-
-
-//    public static void printMultiplication() {
-//        for (Multiplication numbers: ) {
-//
-//        }
-//    }
 }
-//
-//System.out.println("Введите дату и время в формате год-мес-день час:мин : ");
-//        LocalDate dateTask = LocalDate.parse(scanner.next());
-//        LocalTime timeTask = LocalTime.parse(scanner.next());
-//        LocalDateTime startTime = LocalDateTime.of(dateTask, timeTask);

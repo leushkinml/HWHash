@@ -1,39 +1,54 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 public class Recipe //<P extends Product>
 {
 
     private String nameOfRecipe;
     private static double costOfRecipe;
-    static Set<Product> ingredients = new HashSet<>();
+    //static Set<Product> ingredients = new HashSet<>();
     static Set<Recipe> recipesList = new HashSet<>();
 
-//    static HashMap<Product, Integer> productForRecipe = new HashMap<>();
+    private static final Map<Product, Integer> productForRecipe = new HashMap<>();
 
     public Recipe(String nameOfRecipe) {
         setNameOfRecipe(nameOfRecipe);
         this.costOfRecipe = 0;
         //recipesList.add(this);
-        Set<Product> ingredients;
+        //Set<Product> ingredients;
         Set<Recipe> recipesList;
+    }
 
-    }
     public static void addProductInRecipe(Product product, int quantityOfProduct) {
-        if (ingredients.contains(product)) {
-            throw new RuntimeException("Такой продукт \"" + product.getName() + "\" уже добавлен в рецепт!");
+        if (productForRecipe.containsKey(product)) {
+            throw new RuntimeException("Ошибка ввода");
         }
-        ingredients.add(product);
-        costOfRecipe = costOfRecipe + product.getPriceInRubles()*quantityOfProduct;
+        productForRecipe.put(product, quantityOfProduct);
     }
+
+
+    public int getCostForProduct() {
+        int sum = 0;
+        for (Product key : productForRecipe.keySet()) {
+            sum += productForRecipe.get(key) * key.getPriceInRubles();
+        }
+        return sum;
+    }
+
+//
+//    public static void addProductInRecipe(Product product, int quantityOfProduct) {
+//        if (ingredients.contains(product)) {
+//            throw new RuntimeException("Такой продукт \"" + product.getName() + "\" уже добавлен в рецепт!");
+//        }
+//        ingredients.add(product);
+//        costOfRecipe = costOfRecipe + product.getPriceInRubles()*quantityOfProduct;
+//    }
 
     public static void addRecipeInList(Recipe newRecipe) {
         if (!recipesList.add(newRecipe)) {
             throw new RuntimeException("Такой рецепт \"" + newRecipe.nameOfRecipe + "\" уже есть!");
         }
     }
+
     public String getNameOfRecipe() {
         return nameOfRecipe;
     }
@@ -65,9 +80,9 @@ public class Recipe //<P extends Product>
         return recipesList;
     }
 
-    public Set<Product> getIngredients() {
-        return ingredients;
-    }
+//    public Set<Product> getIngredients() {
+//        return ingredients;
+//    }
 //    public HashMap<Product, Integer> getProductForRecipe() {
 //        return productForRecipe;
 //    }
@@ -96,7 +111,7 @@ public class Recipe //<P extends Product>
         return "Recipe{" +
                 "nameOfRecipe='" + getNameOfRecipe() + '\'' +
                 ", costOfRecipe=" + costOfRecipe +
-                ", ingredients=" + getIngredients() +
+                ", ingredients=" + productForRecipe +
                 '}';
     }
 }
