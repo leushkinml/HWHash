@@ -30,14 +30,7 @@ public class MapTest {
 
         System.out.println(mapFrom);
 
-        for (String keySet : mapFrom.keySet()) {
-            Integer sum = 0;
-            List<Integer> tempList = mapFrom.get(keySet);
-            for (Integer integerSum : tempList) {
-                sum += integerSum;
-            }
-            mapTo.put(keySet, sum);
-        }
+
         // Второй вариант через Entry
 //        for (Map.Entry<String, List<Integer>> entry : mapFrom.entrySet()) {
 //            Integer sum = 0;
@@ -47,10 +40,6 @@ public class MapTest {
 //            }
 //            mapTo.put(entry.getKey(), sum);
 //        }
-
-
-
         System.out.println(mapTo);
-
     }
 }

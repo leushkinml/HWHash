@@ -12,7 +12,7 @@ public class Recipe //<P extends Product>
 
     public Recipe(String nameOfRecipe) {
         setNameOfRecipe(nameOfRecipe);
-        this.costOfRecipe = 0;
+        this.costOfRecipe = getCostForProduct();
         //recipesList.add(this);
         //Set<Product> ingredients;
         Set<Recipe> recipesList;
@@ -33,8 +33,6 @@ public class Recipe //<P extends Product>
         }
         return sum;
     }
-
-//
 //    public static void addProductInRecipe(Product product, int quantityOfProduct) {
 //        if (ingredients.contains(product)) {
 //            throw new RuntimeException("Такой продукт \"" + product.getName() + "\" уже добавлен в рецепт!");
@@ -67,14 +65,6 @@ public class Recipe //<P extends Product>
 //        }
 //        return costOfRecipe;
 //    }
-//    public double getCostOfRecipe() {
-//        double costOfRecipe = 0;
-//        for (Product product : ingredients) {
-//            costOfRecipe = product.getPriceInRubles() + costOfRecipe;
-//        }
-//        return costOfRecipe;
-//    }
-
 
     public static Set<Recipe> getRecipesList() {
         return recipesList;
@@ -110,7 +100,7 @@ public class Recipe //<P extends Product>
     public String toString() {
         return "Recipe{" +
                 "nameOfRecipe='" + getNameOfRecipe() + '\'' +
-                ", costOfRecipe=" + costOfRecipe +
+                ", costOfRecipe=" + getCostForProduct() +
                 ", ingredients=" + productForRecipe +
                 '}';
     }

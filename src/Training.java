@@ -16,8 +16,7 @@ public class Training {
         freshMap.put("First", 555);
         System.out.println(freshMap);
 
-        Training.addToMap("First", 111);
-        addToMap("First", 111);
+//        addToMap("First", 555);
 
     }
     public static void addToMap(String str, Integer count) {
