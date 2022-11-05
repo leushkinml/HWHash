@@ -3,7 +3,6 @@ import java.util.Random;
 import java.util.Set;
 
 public class Multiplication {
-
     private static Set<String> setTasks = new HashSet<>();
     public static void main(String[] args) {
         int count = 0;
@@ -17,8 +16,6 @@ public class Multiplication {
         }
         System.out.println(setTasks);
     }
-
-
     public static String generatePairNumber() {
         int x;
         int y;
@@ -27,5 +24,4 @@ public class Multiplication {
         y = ran.nextInt(10);
         return x + "*" + y;
     }
-
 }
