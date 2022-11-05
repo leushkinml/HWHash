@@ -25,33 +25,33 @@ public class MillionSityTable {
 
         addSityInList();
     }
-
-
         public static void addSityInList() {
-            Set<Integer> setOfIndex = new HashSet<>();
+            Set<Integer> setOfIndex = new LinkedHashSet<>();
             Random random = new Random();
             int i = 0;
+            System.out.println(" initial i = " + i);
+
             while (i < 10) {
                 int number = random.nextInt(15)+1;
+                System.out.println("сгенерированное number = " + number);
+                System.out.println("i в цикле = " + i);
                 if (!setOfIndex.contains(number)) {
                     setOfIndex.add(number);
                     i++;
                 }
+                System.out.println("Получившийся setOfIndex = " + setOfIndex);
+                System.out.println();
             }
-
-
-
             // Set<Integer> setOfIndex = new HashSet<>();
 //            int i = 0;
 //            while (i < 10) {
 //                setOfIndex.add(random.nextInt(15)+1);
 //                i ++;
 //            }
-
 //            for (int i = 0; i < 15; i++) {
 //                setOfIndex.add(random.nextInt(15));
 //            }
-            System.out.println();
+//            System.out.println();
             System.out.println("Укажите население города: ");
             int count = 1;
             for (Integer index : setOfIndex) {
@@ -59,4 +59,6 @@ public class MillionSityTable {
              count ++;
             }
         }
+
+
 }
