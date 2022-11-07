@@ -42,23 +42,14 @@ public class MillionSityTable {
                 System.out.println("Получившийся setOfIndex = " + setOfIndex);
                 System.out.println();
             }
-            // Set<Integer> setOfIndex = new HashSet<>();
-//            int i = 0;
-//            while (i < 10) {
-//                setOfIndex.add(random.nextInt(15)+1);
-//                i ++;
-//            }
-//            for (int i = 0; i < 15; i++) {
-//                setOfIndex.add(random.nextInt(15));
-//            }
-//            System.out.println();
+
             System.out.println("Укажите население города: ");
             int count = 1;
             for (Integer index : setOfIndex) {
-             System.out.println(count + ". " + sities.get(index) + " =");
+                System.out.println(index);
+
+              System.out.println(count + ". " + sities.get(index) + " =");
              count ++;
             }
         }
-
-
 }
